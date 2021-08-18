@@ -36,6 +36,7 @@
                                  </div>  
                                   
 									<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+										<button type="button" class="btn btn-primary" onclick="indexViewObj.fn_list()">목록</button>
 										<button type="button" class="btn btn-primary" onclick="indexViewObj.fn_delete()">삭제</button>
 										<button type="button" class="btn btn-primary" onclick="indexViewObj.fn_modify()">수정</button>
 									</div>
