@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 @MapperScan(basePackages = "board")
 @SpringBootApplication
@@ -38,4 +39,8 @@ public class MyProjectApplication {
 	    return new SqlSessionTemplate(factory);
 	}
 	
+	@Bean
+    MappingJackson2JsonView jsonView(){
+        return new MappingJackson2JsonView();
+    }
 }
