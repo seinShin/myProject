@@ -1,5 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="indexMapper">
-
+<mapper namespace="board.rest.mapper.indexMapper">
+		
+	<select id="indexList" resultType="cMap" parameterType="dMap">
+		/* indexList :: 메인 조회 */
+		SELECT SEQ
+		, TITLE
+		, CONTENT
+		, REG_ID
+		, DATE_FORMAT(REG_DT, '%Y-%m-%d') REG_DT_YMD
+		, DATE_FORMAT(UPD_DT, '%Y-%m-%d') UPD_DT_YMD
+		FROM tb_brd
+		WHERE DEL_YN = 'N'
+		ORDER BY SEQ DESC
+		<if test="@org.apache.commons.lang.StringUtils@isNotEmpty(scopeRow)">
+			limit #{scopeRow}, #{rowCount}
+		</if>
+	</select>
+	
+	<select id="boardCount" resultType="int" parameterType="dMap">
+		/* boardCount ::  메인 게시물 카운트 */
+		SELECT COUNT(*)
+		FROM tb_brd
+		<if test="@org.apache.commons.lang.StringUtils@isNotEmpty(scopeRow)">
+			limit #{scopeRow}, #{rowCount}
+		</if>
+	</select>
+	
+	<select id="indexInfo" resultType="cMap" parameterType="dMap">
+		/* boardIndo :: 게시판 상세 조회 */
+		SELECT *
+		FROM tb_brd
+		WHERE SEQ = #{seq}
+	</select>
+	
+	<update id="indexUpdate" parameterType="dMap">
+		/* indexUpdate :: 게시판 수정 */
+		UPDATE tb_brd SET
+			TITLE = #{title}
+			, CONTENT = #{contents}
+			, UPD_DT = NOW()
+		WHERE SEQ = #{seq}
+	</update>
+	
+	<update id="indexDelete" parameterType = "dMap">
+		/* indexDelete :: 게시물 삭제 */
+		UPDATE tb_brd SET
+			DEL_YN = 'Y'
+			, UPD_DT = NOW()
+		WHERE SEQ IN (${seq})
+	
+	</update>
+	
+	<insert id="indexWrite" parameterType="dMap" useGeneratedKeys="true" keyProperty="seqArr">
+		/* indexWrite :: 게시판 등록 */
+		INSERT INTO tb_brd SET
+			SEQ = #{seqArr}
+			, TITLE = #{title}
+			, CONTENT = #{contents}
+			, REG_ID = #{adminId}
+			, REG_DT = NOW()
+	</insert>
+	
 </mapper>
