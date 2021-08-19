@@ -41,7 +41,7 @@ public class indexController {
 	* @Author : se-in-Shin
 	* @Version : 2021. 7. 13.
 	**************************************************/
-	@RequestMapping(value={"/", "/index"}, method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value={"/", "/login"}, method={RequestMethod.GET, RequestMethod.POST})
     public String index(HttpServletRequest request, Model model) throws Exception {
 		logger.info("index controller");
 		
@@ -49,9 +49,9 @@ public class indexController {
 		
 		HttpUtil.getParams(paramMap, model);
 		
-		logger.info("index controller");
+		logger.info("login controller");
 		
-		return "index";
+		return "login";
 	}
 	
 	
