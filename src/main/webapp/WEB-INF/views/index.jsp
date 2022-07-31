@@ -19,6 +19,21 @@
                         	<form id="boardFrm" name="boardFrm" method="post">
                         		<input type="hidden" id="seq" name="seq" value="">
 								<input type="hidden" id="nowPage" name="nowPage" value="${nowPage}">
+								
+								<!--search -->
+								<div class="input-group">
+									<select class="form-control fl style3" id="searchType" name="searchType">
+										<option value="all">전체</option>
+										<option value="subject">제목</option>
+										<option value="content">내용</option>
+										<option value="regId">등록자</option>
+									</select>
+									<input type="text" id="searchText" name="searchText" class="form-control" placeholder="검색어를 입력하세요." value="${searchText}">
+									<span class="input-group-btn">
+										<button type="button" class="btn btn-default" onclick="boardObj.fn_search()"><i class="fa fa-search"></i></button>
+									</span>
+								</div>
+						
 	                            <div class="table-responsive">
 	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                                    <colgroup>
@@ -58,10 +73,10 @@
 		                        		</tfoot>
 	                                </table>
 	                                <span class="col-xs-12 text-center">
-										<nav id="nav">
+										<nav id="nav" style="margin-left:500px; margin-top:20px;">
 										</nav>
 									</span>
-									<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+									<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" style="margin-left:470px;">
 										<button type="button" class="btn btn-primary" onclick="boardObj.fn_delete()">삭제</button>
 										<button type="button" class="btn btn-primary" onclick="boardObj.fn_write()">등록</button>	
 									</div>
@@ -72,16 +87,17 @@
 
                 </div>
             <!-- End of Main Content -->
-
-           
-
 <script>
 	var page;
+	var searchText = '${searchText}';
+	var searchType = '${searchType}';
+	
 	if($('#nowPage').val()){
 		page=$('#nowPage').val()
 	}else{
 		page=1;
 	}
+	
 	$(document).ready(function(){
 		boardObj.fn_list(page);
 		$("#check-all").click(function(){
@@ -94,25 +110,38 @@
 	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
 	            $("#boardList input:checkbox[name=seqArr]:checkbox").prop("checked",false);
 	        }
-	    })
-	})
+	    });
+		
+		$('#dataTable_length').hide();
+		$('#dataTable_filter').hide();
+		$('#dataTable_info').hide();
+		$('#dataTable_paginate').hide();
+	});
 	
 	
 	let boardObj = {
 			fn_list :  function(page){
 				var params = "nowPage="+page;
+				
+				if (searchText) params += "&searchText="+ searchText;
+				if (searchType) params += "&searchType="+ searchType;
+
 				ajaxParamExecute(params,"/board/rest/indexList", "post", false, false, boardObj.fn_listReturn);
+			},
+			fn_search :  function(){
+				searchText = $('#searchText').val();
+				searchType = $('#searchType').val();
+				boardObj.fn_list(1);
 			},
 			fn_listReturn : function(rst){
 				$('#nowPage').val(rst.pageMap.nowPage);
 				$('#boardList').html('');
+				console.log(rst);
 				if(rst.resultList.length > 0) {
 					for(var i in rst.resultList) {
 						var trAddClass = 'even';
-						
 						if (i%2 == 0) trAddClass = 'even';
 						if (i%2 == 1) trAddClass = 'odd';
-						
 						var list = $('#boardListCron').clone().addClass(trAddClass).removeAttr('id').show();
 						list.find('.seq').val(rst.resultList[i].seq);
 						list.find('.order').text(rst.pageMap.rowMax - ((rst.pageMap.nowPage-1) * 10) - i );
@@ -121,6 +150,7 @@
 						list.find('.contents').html(rst.resultList[i].content);
 						list.find('.regId').html(rst.resultList[i].regId);
 						list.find('.regDt').text(rst.resultList[i].regDtYmd);
+						list.find('.updDt').text(rst.resultList[i].updDtYmd);
 						
 						$('#boardList').append(list);
 					}					
@@ -167,7 +197,7 @@
 			}
 			
 		}
-		
+	
 		function goPage(page){
 			boardObj.fn_list(page);
 		}		

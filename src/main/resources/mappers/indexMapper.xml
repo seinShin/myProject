@@ -12,7 +12,23 @@
 		, DATE_FORMAT(UPD_DT, '%Y-%m-%d') UPD_DT_YMD
 		FROM tb_brd
 		WHERE DEL_YN = 'N'
-		ORDER BY SEQ DESC
+		<if test="@org.apache.commons.lang.StringUtils@isNotEmpty(searchText)">
+		<choose>
+			<when test='"all".equals(searchType)'>
+				AND TITLE LIKE CONCAT('%', #{searchText}, '%') AND CONTENT LIKE CONCAT('%', #{searchText}, '%') 
+    	 	</when>
+			<when test='"subject".equals(searchType)'>
+				AND TITLE LIKE CONCAT('%', #{searchText}, '%')
+			</when>
+			<when test='"content".equals(searchType)'>
+				AND CONTENTS LIKE CONCAT('%', #{searchText}, '%')
+			</when>
+			<when test='"regId".equals(searchType)'>
+				AND REG_ID LIKE CONCAT('%', #{searchText}, '%')
+			</when>
+		</choose>
+		</if>
+		ORDER BY REG_DT DESC
 		<if test="@org.apache.commons.lang.StringUtils@isNotEmpty(scopeRow)">
 			limit #{scopeRow}, #{rowCount}
 		</if>
@@ -22,6 +38,23 @@
 		/* boardCount ::  메인 게시물 카운트 */
 		SELECT COUNT(*)
 		FROM tb_brd
+		WHERE DEL_YN = 'N'
+		<if test="@org.apache.commons.lang.StringUtils@isNotEmpty(searchText)">
+		<choose>
+			<when test='"all".equals(searchType)'>
+				AND TITLE LIKE CONCAT('%', #{searchText}, '%') AND CONTENT LIKE CONCAT('%', #{searchText}, '%') 
+    	 	</when>
+			<when test='"subject".equals(searchType)'>
+				AND TITLE LIKE CONCAT('%', #{searchText}, '%')
+			</when>
+			<when test='"content".equals(searchType)'>
+				AND CONTENTS LIKE CONCAT('%', #{searchText}, '%')
+			</when>
+			<when test='"regId".equals(searchType)'>
+				AND REG_ID LIKE CONCAT('%', #{searchText}, '%')
+			</when>
+		</choose>
+		</if>
 		<if test="@org.apache.commons.lang.StringUtils@isNotEmpty(scopeRow)">
 			limit #{scopeRow}, #{rowCount}
 		</if>

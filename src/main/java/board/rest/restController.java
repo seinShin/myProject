@@ -48,7 +48,7 @@ public class restController {
 	**************************************************/
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value={"/indexList"}, method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView index(HttpServletRequest request) throws Exception {
+	public ModelAndView indexList(HttpServletRequest request) throws Exception {
 		DataMap paramMap = HttpUtil.getRequestDataMap(request);
 		ModelAndView mv = new ModelAndView("jsonView");
 		
@@ -65,19 +65,18 @@ public class restController {
 		paramMap.put("nowPage", nowPage);
 		
 		// rowMax
-				try {
-					rowMax = indexMapper.boardCount(paramMap);
-				} catch (Exception e) {
-					logger.error("게시물 갯수 조회 오류 : {}", e);
-				}
+		try {
+			rowMax = indexMapper.boardCount(paramMap);
+		} catch (Exception e) {
+			logger.error("게시물 갯수 조회 오류 : {}", e);
+		}
 				
 		// 페이지 정보
 		CamelMap pageMap = Paging.initDataMapPage(rowMax, pageCount, rowCount, Integer.parseInt(nowPage));
-
+			
 		paramMap.put("rowCount", rowCount);
 		paramMap.put("scopeRow", pageMap.getInt("scopeRow"));
 				
-		
 		List <CamelMap> resultList = null;
 		
 		try {
@@ -91,7 +90,6 @@ public class restController {
 		mv.addObject("resultList", resultList);
 		mv.addObject("pageMap", pageMap);
 		
-		System.out.println(mv);
 		return mv;
 	}
 	
@@ -158,9 +156,18 @@ public class restController {
 	}
 	
 	
+	/**************************************************
+	* @MethodName : indexDelete
+	* @Description: 게시물 삭제
+	* @param request
+	* @param model
+	* @return boolean
+	* @Author : se-in shin
+	* @Version : 2022. 5. 15.
+	**************************************************/
 	@RequestMapping(value= {"/indexDelete"}, method = {RequestMethod.GET, RequestMethod.POST})
 	public boolean indexDelete(HttpServletRequest request, Model model) {
-		
+		logger.debug("indexDelete Controller");
 		DataMap paramMap = HttpUtil.getRequestDataMap(request);
 		
 		int rst=0;
