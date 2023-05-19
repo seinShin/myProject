@@ -26,32 +26,54 @@ import board.common.util.StringUtil;
 * @Copyright : ⓒADUP. All Right Reserved
 **************************************************/
 @Controller
-@RequestMapping(value={"/"})
 public class indexController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(indexController.class);
 	
-	/**************************************************
-	* @MethodName : index
-	* @Description: 인덱스 페이지
-	* @param request
-	* @param model
-	* @return String
-	* @throws Exception 
-	* @Author : se-in-Shin
-	* @Version : 2021. 7. 13.
-	**************************************************/
-	@RequestMapping(value={"/", "/login"}, method={RequestMethod.GET, RequestMethod.POST})
-    public String index(HttpServletRequest request, Model model) throws Exception {
-		logger.info("index controller");
+    /**************************************************
+    * @MethodName : index
+    * @Description: 인덱스 페이지
+    * @param request
+    * @param model
+    * @return String
+    * @throws Exception 
+    * @Author : se-in-Shin
+    * @Version : 2021. 7. 13.
+    **************************************************/
+//    @RequestMapping(value={"/index"}, method={RequestMethod.GET, RequestMethod.POST})
+//    public String index(HttpServletRequest request, Model model) throws Exception {
+//        logger.info("index controller");
+//        
+//        DataMap paramMap = HttpUtil.getRequestDataMap(request);
+//        
+//        HttpUtil.getParams(paramMap, model);
+//        
+//        logger.info("index controller");
+//        
+//        return "/index";
+//    }
+	
+//	/**************************************************
+//	* @MethodName : index
+//	* @Description: 인덱스 페이지
+//	* @param request
+//	* @param model
+//	* @return String
+//	* @throws Exception 
+//	* @Author : se-in-Shin
+//	* @Version : 2021. 7. 13.
+//	**************************************************/
+	@RequestMapping(value={"/", "/index"}, method={RequestMethod.GET, RequestMethod.POST})
+    public String login(HttpServletRequest request, Model model) throws Exception {
+		logger.info("index controller---start");
 		
 		DataMap paramMap = HttpUtil.getRequestDataMap(request);
 		
 		HttpUtil.getParams(paramMap, model);
 		
-		logger.info("login controller");
+		logger.info("index controller---end");
 		
-		return "login";
+		return "index";
 	}
 	
 	
