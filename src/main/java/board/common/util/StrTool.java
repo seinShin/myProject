@@ -2,13 +2,7 @@ package board.common.util;
 
 import java.util.HashMap;
 
-/**************************************************
-* @FileName   : StrTool.java
-* @Description: Null -related utilities
-* @Author     : Seung-Jun. Kim
-* @Version    : 2021. 07. 09.
-* @Copyright  : ⓒADUP. All Right Reserved
-**************************************************/
+
 public class StrTool {
 
 	/**************************************************

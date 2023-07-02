@@ -18,41 +18,12 @@ import board.common.util.HttpUtil;
 import board.common.util.StringUtil;
 
 
-/**************************************************
-* @FileName : IndexController.java
-* @Description: 인덱스 페이지 컨트롤러
-* @Author : Hyung-Seon. Yoon
-* @Version : 2021. 7. 13.
-* @Copyright : ⓒADUP. All Right Reserved
-**************************************************/
 @Controller
 public class indexController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(indexController.class);
 	
-    /**************************************************
-    * @MethodName : index
-    * @Description: 인덱스 페이지
-    * @param request
-    * @param model
-    * @return String
-    * @throws Exception 
-    * @Author : se-in-Shin
-    * @Version : 2021. 7. 13.
-    **************************************************/
-//    @RequestMapping(value={"/index"}, method={RequestMethod.GET, RequestMethod.POST})
-//    public String index(HttpServletRequest request, Model model) throws Exception {
-//        logger.info("index controller");
-//        
-//        DataMap paramMap = HttpUtil.getRequestDataMap(request);
-//        
-//        HttpUtil.getParams(paramMap, model);
-//        
-//        logger.info("index controller");
-//        
-//        return "/index";
-//    }
-	
+
 //	/**************************************************
 //	* @MethodName : index
 //	* @Description: 인덱스 페이지
@@ -80,14 +51,6 @@ public class indexController {
 	/**************************************************
 	* @MethodName : adminPageView
 	* @Description: 관리자 컨텐츠 공통 뷰 페이지 
-	* @param menu
-	* @param page
-	* @param request
-	* @param model
-	* @return String
-	* @throws Exception
-	* @Author     : Seung-Jun. Kim
-	* @Version    : 2021. 2. 8
 	**************************************************/
 	@RequestMapping(value="/{page}", method={RequestMethod.GET, RequestMethod.POST})
     public String adminPageView(@PathVariable String page, HttpServletRequest request, Model model) throws Exception {

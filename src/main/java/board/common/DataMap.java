@@ -4,13 +4,6 @@ import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 
-/**************************************************
-* @FileName   : DataMap.java
-* @Description: Frequently used Map setting
-* @Author     : Seung-Jun. Kim
-* @Version    : 2021. 07. 09.
-* @Copyright  : ⓒADUP. All Right Reserved
-**************************************************/
 @SuppressWarnings("rawtypes")
 public class DataMap extends HashMap implements Comparable<Object>{
 	

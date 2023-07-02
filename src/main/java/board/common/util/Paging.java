@@ -34,15 +34,7 @@ public class Paging {
 		return pageMap;
 	}
 	
-	/************************************************** 
-	 * @MethodName : pageStartNum
-	 * @Description: 페이지 시작 계산
-	 * @param rowCount
-	 * @param curPage
-	 * @return int
-	 * @Author     : joon
-	 * @Version    : 2015. 4. 24.
-	**************************************************/
+	
 	public static int pageStartNum(int rowCount, int curPage){
 		return (curPage - 1) * rowCount;
 	}
@@ -91,12 +83,7 @@ public class Paging {
 		return sb.toString();
 	}
 	
-	/**
-	 * make <a href>
-	 * @param nPage
-	 * @param title
-	 * @return
-	 */
+
 	public static String getAHref(int nPage, String title, int nowPage){
 		String css = "";
 		String npage = nowPage + "";

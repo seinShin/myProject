@@ -18,14 +18,6 @@ public class DateUtil {
 		return format.format(new Date());
 	}
 
-	/**
-	 * Date pattern change
-	 * @param ymd - Enter dates
-	 * @param pattern - Current patterns
-	 * @param returnPattern - Changing patterns
-	 * @return
-	 * @throws Exception
-	 */
 	public static String dateParse(String ymd, String pattern, String returnPattern) throws Exception{
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		Date date = sdf.parse(ymd);
@@ -34,13 +26,6 @@ public class DateUtil {
 		return sdf.format(date);
 	}
 
-	/**
-	 * Date difference calculation
-	 * @param begin - Started
-	 * @param end - End
-	 * @return
-	 * @throws Exception
-	 */
 	public static long diffOfDate(String begin, String end) throws Exception {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 
@@ -53,13 +38,6 @@ public class DateUtil {
 		return diffDays;
 	}
 
-	/**
-	 * Date of birth based on the difference to the current year / month calculate
-	 * @param birthYmd - Date of birth
-	 * @param pattern - Birth of a pattern
-	 * @return
-	 * @throws Exception
-	 */
 	@SuppressWarnings("unchecked")
     public static DataMap ageYearMonth(String birthYmd, String pattern) throws Exception{
 		long day = diffOfDate(dateParse(birthYmd, pattern, "yyyyMMdd"), getSimpleDate("yyyyMMdd"));
@@ -75,19 +53,6 @@ public class DateUtil {
 		return resultMap;
 	}
 
-	/**************************************************
-	 * @MethodName : calculationDate
-	 * @Description: Date of +/- calculation at a given date
-	 * @param ymd
-	 * @param nowPattern
-	 * @param newPattern
-	 * @param plusNum
-	 * @param minusNum
-	 * @return String
-	 * @throws Exception
-	 * @Author     : joon
-	 * @Version    : 2014. 11. 14.
-	**************************************************/
 	@SuppressWarnings("static-access")
     public static String calculationDate(String ymd, String nowPattern, String newPattern, int plusNum, int minusNum) throws Exception{
 		SimpleDateFormat sdf = new SimpleDateFormat(nowPattern);
@@ -109,19 +74,6 @@ public class DateUtil {
 		return sdf.format(cal.getTime());
 	}
 	
-	/**************************************************
-	 * @MethodName : calculationMonth
-	 * @Description: Date of +/- calculation at a given date
-	 * @param ym
-	 * @param nowPattern
-	 * @param returnPattern
-	 * @param plusNum
-	 * @param minusNum
-	 * @return String
-	 * @throws Exception
-	 * @Author     : joon
-	 * @Version    : 2014. 11. 14.
-	**************************************************/
 	@SuppressWarnings("static-access")
     public static String calculationMonth(String ymd, String nowPattern, String returnPattern, int plusNum, int minusNum) throws Exception{
 		SimpleDateFormat sdf = new SimpleDateFormat(nowPattern);

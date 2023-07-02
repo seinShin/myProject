@@ -79,14 +79,6 @@ public class HttpUtil {
         return map;
     }
 
-    /**************************************************
-    * @MethodName : jsonObjToMap
-    * @Description: Setting the parameter json value map
-    * @param obj
-    * @return HashMap<String,String>
-    * @Author     : Seung-Jun. Kim
-    * @Version    : 2021. 07. 09.
-    **************************************************/
     public static HashMap<String, String> jsonObjToMap(JSONObject obj){
         HashMap<String, String> map = new HashMap<String, String>();
         Iterator<?> keys = obj.keySet().iterator();
@@ -97,14 +89,6 @@ public class HttpUtil {
         return map;
     }
 
-	/**************************************************
-	* @MethodName : getRequestDataMap
-	* @Description: Setting the parameter value DataMap
-	* @param request
-	* @return DataMap
-	* @Author     : Seung-Jun. Kim
-	* @Version    : 2021. 07. 09.
-	**************************************************/
 	@SuppressWarnings("unchecked")
     public static DataMap getRequestDataMap(HttpServletRequest request) {
     	DataMap map = new DataMap();
@@ -143,14 +127,6 @@ public class HttpUtil {
         return map;
     }
 
-    /**************************************************
-    * @MethodName : jsonObjToDataMap
-    * @Description: Setting the parameter json value DataMap
-    * @param obj
-    * @return DataMap
-    * @Author     : Seung-Jun. Kim
-    * @Version    : 2021. 07. 09.
-    **************************************************/
     @SuppressWarnings("unchecked")
 	public static DataMap jsonObjToDataMap(JSONObject obj){
     	DataMap map = new DataMap();
@@ -195,30 +171,13 @@ public class HttpUtil {
 		return macAddressBuilder.toString();
 	}
 	
-	/**************************************************
-	* @MethodName : setMenuInfo
-	* @Description: 페이지 메뉴값 설정
-	* @param menuId
-	* @param menuSubId
-	* @param tabMenuId
-	* @param model void
-	* @Author     : Seung-Jun. Kim
-	* @Version    : 2021. 07. 09.
-	**************************************************/
 	public static void setMenuInfo(String menuId, String menuSubId, String tabMenuId, Model model){
 		model.addAttribute("menuID", StringUtils.isNotEmpty(menuId) ? menuId : "");
 		model.addAttribute("menuSubID", StringUtils.isNotEmpty(menuSubId) ? menuSubId : "");
 		model.addAttribute("menuTab", StringUtils.isNotEmpty(tabMenuId) ? tabMenuId : "");
 	}
+
 	
-	/**************************************************
-	* @MethodName : getParams
-	* @Description: 파라미터 정보 페이지 전달
-	* @param paramMap
-	* @param model void
-	* @Author     : Seung-Jun. Kim
-	* @Version    : 2021. 07. 09.
-	**************************************************/
 	@SuppressWarnings("unchecked")
 	public static void getParams(DataMap paramMap, Model model){
 		
