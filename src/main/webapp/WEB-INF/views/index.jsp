@@ -1,206 +1,554 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-        <!-- Content Wrapper -->
+<!DOCTYPE html>
 
-            <!-- Main Content -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">게시판</h1>
-                    <p class="mb-4">BOARD PROJECT</p>
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"></h6>
-                        </div>
-                        <div class="card-body">
-                        	<form id="boardFrm" name="boardFrm" method="post">
-                        		<input type="hidden" id="seq" name="seq" value="">
-								<input type="hidden" id="nowPage" name="nowPage" value="${nowPage}">
-								
-								<!--search -->
-								<div class="input-group">
-									<select class="form-control fl style3" id="searchType" name="searchType">
-										<option value="all">전체</option>
-										<option value="subject">제목</option>
-										<option value="content">내용</option>
-										<option value="regId">등록자</option>
-									</select>
-									<input type="text" id="searchText" name="searchText" class="form-control" placeholder="검색어를 입력하세요." value="${searchText}">
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default" onclick="boardObj.fn_search()"><i class="fa fa-search"></i></button>
-									</span>
-								</div>
-						
-	                            <div class="table-responsive">
-	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-	                                    <colgroup>
-											<col width="80px">
-											<col width="*">
-											<col width="*">
-											<col width="*">
-											<col width="*">
-										</colgroup>
-										<thead>
-											<tr class="headings">
-												<th class="text-center column-title" style="display: table-cell;">
-										    		<input type="checkbox" id="check-all">
-												</th>
-												<th class="text-center column-title" style="display: table-cell;">No</th>
-												<th class="text-center column-title" style="display: table-cell;">제목</th>
-												<th class="text-center column-title" style="display: table-cell;">내용</th>
-												<th class="text-center column-title" style="display: table-cell;">등록자</th>								
-												<th class="text-center column-title no-link last" style="display: table-cell;">등록일</th>
-												<th class="text-center column-title no-link last" style="display: table-cell;">수정일</th>
-											</tr>
-										</thead>
-										<tbody id="boardList">
-		                        		</tbody>
-		                        		<tfoot style="display:none;">
-		                        			<tr class="pointer" id="boardListCron">
-		                        				<td class="text-center">
-		                           					<input type="checkbox" name="seqArr" class="seq" value="">
-		                            			</td>
-			                            		<td class="text-center order"></td>                        	                            	
-			                            		<td class="text-center"><a href="#" class="title"> </a></td>
-			                            		<td class="text-center contents"></td>
-			                            		<td class="text-center regId"></td>	                            		
-		                            			<td class="text-center last regDt"></td>
-		                            			<td class="text-center last updDt"></td>
-		                        			</tr>
-		                        		</tfoot>
-	                                </table>
-	                                <span class="col-xs-12 text-center">
-										<nav id="nav" style="margin-left:500px; margin-top:20px;">
-										</nav>
-									</span>
-									<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" style="margin-left:470px;">
-										<button type="button" class="btn btn-primary" onclick="boardObj.fn_delete()">삭제</button>
-										<button type="button" class="btn btn-primary" onclick="boardObj.fn_write()">등록</button>	
-									</div>
-	                            </div>
-	                        </form>    
-                        </div>
-                    </div>
+=========================================================
+ -->
 
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    <div class="col-lg-8 mb-4 order-0">
+      <div class="card">
+        <div class="d-flex align-items-end row">
+          <div class="col-sm-7">
+            <div class="card-body">
+              <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+              <p class="mb-4">
+                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
+                your profile.
+              </p>
+
+              <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+            </div>
+          </div>
+          <div class="col-sm-5 text-center text-sm-left">
+            <div class="card-body pb-0 px-0 px-md-4">
+              <img
+                src="frontLayer/assets/img/illustrations/man-with-laptop-light.png"
+                height="140"
+                alt="View Badge User"
+                data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                data-app-light-img="illustrations/man-with-laptop-light.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 order-1">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 col-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title d-flex align-items-start justify-content-between">
+                <div class="avatar flex-shrink-0">
+                  <img
+                    src="frontLayer/assets/img/icons/unicons/chart-success.png"
+                    alt="chart success"
+                    class="rounded"
+                  />
                 </div>
-            <!-- End of Main Content -->
-<script>
-	var page;
-	var searchText = '${searchText}';
-	var searchType = '${searchType}';
-	
-	if($('#nowPage').val()){
-		page=$('#nowPage').val()
-	}else{
-		page=1;
-	}
-	
-	$(document).ready(function(){
-		boardObj.fn_list(page);
-		$("#check-all").click(function(){
-	        //클릭되었으면
-	        if($("#check-all").prop("checked")){
-	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-	            $("#boardList input[name=seqArr]:checkbox").prop("checked",true);
-	            //클릭이 안되있으면
-	        }else{
-	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-	            $("#boardList input:checkbox[name=seqArr]:checkbox").prop("checked",false);
-	        }
-	    });
-		
-		$('#dataTable_length').hide();
-		$('#dataTable_filter').hide();
-		$('#dataTable_info').hide();
-		$('#dataTable_paginate').hide();
-	});
-	
-	
-	let boardObj = {
-			fn_list :  function(page){
-				var params = "nowPage="+page;
-				
-				if (searchText) params += "&searchText="+ searchText;
-				if (searchType) params += "&searchType="+ searchType;
+                <div class="dropdown">
+                  <button
+                    class="btn p-0"
+                    type="button"
+                    id="cardOpt3"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                  </div>
+                </div>
+              </div>
+              <span class="fw-semibold d-block mb-1">Profit</span>
+              <h3 class="card-title mb-2">$12,628</h3>
+              <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title d-flex align-items-start justify-content-between">
+                <div class="avatar flex-shrink-0">
+                  <img
+                    src="frontLayer/assets/img/icons/unicons/wallet-info.png"
+                    alt="Credit Card"
+                    class="rounded"
+                  />
+                </div>
+                <div class="dropdown">
+                  <button
+                    class="btn p-0"
+                    type="button"
+                    id="cardOpt6"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                  </div>
+                </div>
+              </div>
+              <span>Sales</span>
+              <h3 class="card-title text-nowrap mb-1">$4,679</h3>
+              <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Total Revenue -->
+    <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+      <div class="card">
+        <div class="row row-bordered g-0">
+          <div class="col-md-8">
+            <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
+            <div id="totalRevenueChart" class="px-2"></div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-body">
+              <div class="text-center">
+                <div class="dropdown">
+                  <button
+                    class="btn btn-sm btn-outline-primary dropdown-toggle"
+                    type="button"
+                    id="growthReportId"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    2022
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
+                    <a class="dropdown-item" href="javascript:void(0);">2021</a>
+                    <a class="dropdown-item" href="javascript:void(0);">2020</a>
+                    <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="growthChart"></div>
+            <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
 
-				ajaxParamExecute(params,"/board/rest/indexList", "post", false, false, boardObj.fn_listReturn);
-			},
-			fn_search :  function(){
-				searchText = $('#searchText').val();
-				searchType = $('#searchType').val();
-				boardObj.fn_list(1);
-			},
-			fn_listReturn : function(rst){
-				$('#nowPage').val(rst.pageMap.nowPage);
-				$('#boardList').html('');
-				console.log(rst);
-				if(rst.resultList.length > 0) {
-					for(var i in rst.resultList) {
-						var trAddClass = 'even';
-						if (i%2 == 0) trAddClass = 'even';
-						if (i%2 == 1) trAddClass = 'odd';
-						var list = $('#boardListCron').clone().addClass(trAddClass).removeAttr('id').show();
-						list.find('.seq').val(rst.resultList[i].seq);
-						list.find('.order').text(rst.pageMap.rowMax - ((rst.pageMap.nowPage-1) * 10) - i );
-						list.find('.title').html(rst.resultList[i].title);
-						list.find('.title').attr('onclick', 'boardObj.fn_view(\''+ rst.resultList[i].seq + '\')');
-						list.find('.contents').html(rst.resultList[i].content);
-						list.find('.regId').html(rst.resultList[i].regId);
-						list.find('.regDt').text(rst.resultList[i].regDtYmd);
-						list.find('.updDt').text(rst.resultList[i].updDtYmd);
-						
-						$('#boardList').append(list);
-					}					
-						
-					$("#nav").html('');
-					$("#nav").html(rst.pageMap.nav);
-				}	else {
-					$('#nav').html('');
-					$('boardList').html('');
-				}
-			},
-			fn_view : function(seq){
-				$('#seq').val(seq);
-				$('#boardFrm').prop("action", "indexview");
-				$('#boardFrm').submit();				
-			},
-			fn_delete : function(){
-				if($("#boardList input[name=seqArr]:checked").length == 0){
-					alert("삭제할 데이터를 선택해 주세요.");
-				}else{
-					if(confirm("삭제하시겠습니까?")){
-						var seqs = [];
-						$("#boardList input[name=seqArr]:checked").each(function(){
-							seqs[seqs.length] = $(this).val();
-						});
-						
-						var seq = seqs.join(",");
-						
-						ajaxParamExecute("seq="+seq, "/board/rest/indexDelete", "post", false, false, boardObj.fn_deleteReturn);
-					}
-				}
-			},
-			fn_deleteReturn : function(rst){
-				if(rst){
-					alert("삭제되었습니다.");
-					$("#check-all").attr("checked", false);
-					boardObj.fn_list(1);
-				}else{
-					alert("삭제에 실패하였습니다. \n관리자에게 문의바랍니다.");
-				}
-			},
-			fn_write : function(){
-				window.location="indexwrite";
-			}
-			
-		}
-	
-		function goPage(page){
-			boardObj.fn_list(page);
-		}		
-	
-</script>
+            <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
+              <div class="d-flex">
+                <div class="me-2">
+                  <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
+                </div>
+                <div class="d-flex flex-column">
+                  <small>2022</small>
+                  <h6 class="mb-0">$32.5k</h6>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="me-2">
+                  <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
+                </div>
+                <div class="d-flex flex-column">
+                  <small>2021</small>
+                  <h6 class="mb-0">$41.2k</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Total Revenue -->
+    <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+      <div class="row">
+        <div class="col-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title d-flex align-items-start justify-content-between">
+                <div class="avatar flex-shrink-0">
+                  <img src="frontLayer/assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
+                </div>
+                <div class="dropdown">
+                  <button
+                    class="btn p-0"
+                    type="button"
+                    id="cardOpt4"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                  </div>
+                </div>
+              </div>
+              <span class="d-block mb-1">Payments</span>
+              <h3 class="card-title text-nowrap mb-2">$2,456</h3>
+              <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title d-flex align-items-start justify-content-between">
+                <div class="avatar flex-shrink-0">
+                  <img src="frontLayer/assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                </div>
+                <div class="dropdown">
+                  <button
+                    class="btn p-0"
+                    type="button"
+                    id="cardOpt1"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="cardOpt1">
+                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                  </div>
+                </div>
+              </div>
+              <span class="fw-semibold d-block mb-1">Transactions</span>
+              <h3 class="card-title mb-2">$14,857</h3>
+              <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+            </div>
+          </div>
+        </div>
+        <!-- </div>
+<div class="row"> -->
+        <div class="col-12 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                  <div class="card-title">
+                    <h5 class="text-nowrap mb-2">Profile Report</h5>
+                    <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                  </div>
+                  <div class="mt-sm-auto">
+                    <small class="text-success text-nowrap fw-semibold"
+                      ><i class="bx bx-chevron-up"></i> 68.2%</small
+                    >
+                    <h3 class="mb-0">$84,686k</h3>
+                  </div>
+                </div>
+                <div id="profileReportChart"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Order Statistics -->
+    <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+      <div class="card h-100">
+        <div class="card-header d-flex align-items-center justify-content-between pb-0">
+          <div class="card-title mb-0">
+            <h5 class="m-0 me-2">Order Statistics</h5>
+            <small class="text-muted">42.82k Total Sales</small>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn p-0"
+              type="button"
+              id="orederStatistics"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="bx bx-dots-vertical-rounded"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
+              <a class="dropdown-item" href="javascript:void(0);">Select All</a>
+              <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+              <a class="dropdown-item" href="javascript:void(0);">Share</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex flex-column align-items-center gap-1">
+              <h2 class="mb-2">8,258</h2>
+              <span>Total Orders</span>
+            </div>
+            <div id="orderStatisticsChart"></div>
+          </div>
+          <ul class="p-0 m-0">
+            <li class="d-flex mb-4 pb-1">
+              <div class="avatar flex-shrink-0 me-3">
+                <span class="avatar-initial rounded bg-label-primary"
+                  ><i class="bx bx-mobile-alt"></i
+                ></span>
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <h6 class="mb-0">Electronic</h6>
+                  <small class="text-muted">Mobile, Earbuds, TV</small>
+                </div>
+                <div class="user-progress">
+                  <small class="fw-semibold">82.5k</small>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex mb-4 pb-1">
+              <div class="avatar flex-shrink-0 me-3">
+                <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <h6 class="mb-0">Fashion</h6>
+                  <small class="text-muted">T-shirt, Jeans, Shoes</small>
+                </div>
+                <div class="user-progress">
+                  <small class="fw-semibold">23.8k</small>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex mb-4 pb-1">
+              <div class="avatar flex-shrink-0 me-3">
+                <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <h6 class="mb-0">Decor</h6>
+                  <small class="text-muted">Fine Art, Dining</small>
+                </div>
+                <div class="user-progress">
+                  <small class="fw-semibold">849k</small>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex">
+              <div class="avatar flex-shrink-0 me-3">
+                <span class="avatar-initial rounded bg-label-secondary"
+                  ><i class="bx bx-football"></i
+                ></span>
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <h6 class="mb-0">Sports</h6>
+                  <small class="text-muted">Football, Cricket Kit</small>
+                </div>
+                <div class="user-progress">
+                  <small class="fw-semibold">99</small>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--/ Order Statistics -->
+
+    <!-- Expense Overview -->
+    <div class="col-md-6 col-lg-4 order-1 mb-4">
+      <div class="card h-100">
+        <div class="card-header">
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+              <button
+                type="button"
+                class="nav-link active"
+                role="tab"
+                data-bs-toggle="tab"
+                data-bs-target="#navs-tabs-line-card-income"
+                aria-controls="navs-tabs-line-card-income"
+                aria-selected="true"
+              >
+                Income
+              </button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="nav-link" role="tab">Expenses</button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="nav-link" role="tab">Profit</button>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body px-0">
+          <div class="tab-content p-0">
+            <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
+              <div class="d-flex p-4 pt-3">
+                <div class="avatar flex-shrink-0 me-3">
+                  <img src="frontLayer/assets/img/icons/unicons/wallet.png" alt="User" />
+                </div>
+                <div>
+                  <small class="text-muted d-block">Total Balance</small>
+                  <div class="d-flex align-items-center">
+                    <h6 class="mb-0 me-1">$459.10</h6>
+                    <small class="text-success fw-semibold">
+                      <i class="bx bx-chevron-up"></i>
+                      42.9%
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div id="incomeChart"></div>
+              <div class="d-flex justify-content-center pt-4 gap-2">
+                <div class="flex-shrink-0">
+                  <div id="expensesOfWeek"></div>
+                </div>
+                <div>
+                  <p class="mb-n1 mt-1">Expenses This Week</p>
+                  <small class="text-muted">$39 less than last week</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Expense Overview -->
+
+    <!-- Transactions -->
+    <div class="col-md-6 col-lg-4 order-2 mb-4">
+      <div class="card h-100">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="card-title m-0 me-2">Transactions</h5>
+          <div class="dropdown">
+            <button
+              class="btn p-0"
+              type="button"
+              id="transactionID"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="bx bx-dots-vertical-rounded"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
+              <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
+              <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+              <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="p-0 m-0">
+            <li class="d-flex mb-4 pb-1">
+              <div class="avatar flex-shrink-0 me-3">
+                <img src="frontLayer/assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <small class="text-muted d-block mb-1">Paypal</small>
+                  <h6 class="mb-0">Send money</h6>
+                </div>
+                <div class="user-progress d-flex align-items-center gap-1">
+                  <h6 class="mb-0">+82.6</h6>
+                  <span class="text-muted">USD</span>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex mb-4 pb-1">
+              <div class="avatar flex-shrink-0 me-3">
+                <img src="frontLayer/assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <small class="text-muted d-block mb-1">Wallet</small>
+                  <h6 class="mb-0">Mac'D</h6>
+                </div>
+                <div class="user-progress d-flex align-items-center gap-1">
+                  <h6 class="mb-0">+270.69</h6>
+                  <span class="text-muted">USD</span>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex mb-4 pb-1">
+              <div class="avatar flex-shrink-0 me-3">
+                <img src="frontLayer/assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <small class="text-muted d-block mb-1">Transfer</small>
+                  <h6 class="mb-0">Refund</h6>
+                </div>
+                <div class="user-progress d-flex align-items-center gap-1">
+                  <h6 class="mb-0">+637.91</h6>
+                  <span class="text-muted">USD</span>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex mb-4 pb-1">
+              <div class="avatar flex-shrink-0 me-3">
+                <img src="frontLayer/assets/img/icons/unicons/cc-success.png" alt="User" class="rounded" />
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <small class="text-muted d-block mb-1">Credit Card</small>
+                  <h6 class="mb-0">Ordered Food</h6>
+                </div>
+                <div class="user-progress d-flex align-items-center gap-1">
+                  <h6 class="mb-0">-838.71</h6>
+                  <span class="text-muted">USD</span>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex mb-4 pb-1">
+              <div class="avatar flex-shrink-0 me-3">
+                <img src="frontLayer/assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <small class="text-muted d-block mb-1">Wallet</small>
+                  <h6 class="mb-0">Starbucks</h6>
+                </div>
+                <div class="user-progress d-flex align-items-center gap-1">
+                  <h6 class="mb-0">+203.33</h6>
+                  <span class="text-muted">USD</span>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex">
+              <div class="avatar flex-shrink-0 me-3">
+                <img src="frontLayer/assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded" />
+              </div>
+              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                  <small class="text-muted d-block mb-1">Mastercard</small>
+                  <h6 class="mb-0">Ordered Food</h6>
+                </div>
+                <div class="user-progress d-flex align-items-center gap-1">
+                  <h6 class="mb-0">-92.45</h6>
+                  <span class="text-muted">USD</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--/ Transactions -->
+  </div>
+</div>
+<!-- / Content -->
+
+            
+
+ 
 
