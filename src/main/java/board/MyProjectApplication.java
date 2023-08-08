@@ -6,13 +6,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+@ComponentScan("board/")
 @MapperScan(basePackages = "board")
 @SpringBootApplication
 public class MyProjectApplication {
@@ -26,7 +27,7 @@ public class MyProjectApplication {
 
 		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
 		factory.setDataSource(ds);
-		factory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:/mybatis/mybatis-config.xml"));;
+		factory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:/mybatis/mybatis-config.xml"));
 		factory.setMapperLocations(
 		        new PathMatchingResourcePatternResolver().getResources("classpath:/mappers/*.xml")
 		        );

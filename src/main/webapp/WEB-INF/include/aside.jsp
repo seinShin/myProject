@@ -80,7 +80,7 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item">
+            <!-- <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Layouts</div>
@@ -114,18 +114,18 @@
                 </li>
               </ul>
             </li>
-
+ -->
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Pages</span>
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+                <div data-i18n="Account Settings">Account Setting</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.html" class="menu-link">
+                  <a href="account" class="menu-link">
                     <div data-i18n="Account">Account</div>
                   </a>
                 </li>
@@ -164,7 +164,7 @@
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+           <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Misc">Misc</div>
@@ -183,15 +183,15 @@
               </ul>
             </li>
             <!-- Components -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
-            <!-- Cards -->
+  <!--           <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+            Cards
             <li class="menu-item">
               <a href="cards-basic.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Cards</div>
               </a>
             </li>
-            <!-- User interface -->
+            User interface
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-box"></i>
@@ -296,7 +296,7 @@
               </ul>
             </li>
 
-            <!-- Extended components -->
+            Extended components
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-copy"></i>
@@ -323,9 +323,9 @@
               </a>
             </li>
 
-            <!-- Forms & Tables -->
+            Forms & Tables
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
-            <!-- Forms -->
+            Forms
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
@@ -362,14 +362,14 @@
                 </li>
               </ul>
             </li>
-            <!-- Tables -->
+            Tables
             <li class="menu-item">
               <a href="tables-basic.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-table"></i>
                 <div data-i18n="Tables">Tables</div>
               </a>
             </li>
-            <!-- Misc -->
+            Misc
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
             <li class="menu-item">
               <a
@@ -390,7 +390,7 @@
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Documentation</div>
               </a>
-            </li>
+            </li> -->
           </ul>
         </aside>
         <!-- / Menu -->
