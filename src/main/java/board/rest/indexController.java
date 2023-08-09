@@ -47,11 +47,9 @@ public class indexController {
 	**************************************************/
 	@GetMapping({"/{menu}/{page}"})
     public String pageMenuView(@PathVariable String menu, @PathVariable String page, HttpServletRequest request, Model model) throws Exception {
-		logger.info("adminPageView controller---start");
+		logger.info("pageMenuView controller---start");
 		logger.info(page);
 		logger.info(menu);
-		
-
 		return "/"+menu+"/"+page;
 	}
 	
@@ -61,9 +59,8 @@ public class indexController {
 	**************************************************/
 	@GetMapping({"/{page}"})
     public String PageView(@PathVariable String page, HttpServletRequest request, Model model) throws Exception {
-		logger.info("adminPageView controller---start");
+		logger.info("PageView controller---start");
 		logger.info(page);
-		
 
 		return page;
 	}

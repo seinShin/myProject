@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- =========================================================
 * Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
 ==============================================================

@@ -125,7 +125,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="account" class="menu-link">
+                  <a href="account/account" class="menu-link">
                     <div data-i18n="Account">Account</div>
                   </a>
                 </li>
