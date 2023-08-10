@@ -29,7 +29,6 @@ public class indexController {
 	* @return String
 	* @throws Exception 
 	* @Author : se-in-Shin
-	* @Version : 2021. 7. 13.
 	**************************************************/
 	@GetMapping({"/", "/index"})
     public String login(HttpServletRequest request, Model model) throws Exception {
@@ -48,10 +47,10 @@ public class indexController {
 	@GetMapping({"/{menu}/{page}"})
     public String pageMenuView(@PathVariable String menu, @PathVariable String page, HttpServletRequest request, Model model) throws Exception {
 		logger.info("pageMenuView controller---start");
-		logger.info(page);
-		logger.info(menu);
+		logger.info("pageMenuView controller---end");
 		return "/"+menu+"/"+page;
 	}
+	
 	
 	/**************************************************
 	* @MethodName : pageView
@@ -60,8 +59,7 @@ public class indexController {
 	@GetMapping({"/{page}"})
     public String PageView(@PathVariable String page, HttpServletRequest request, Model model) throws Exception {
 		logger.info("PageView controller---start");
-		logger.info(page);
-
+		logger.info("PageView controller---end");
 		return page;
 	}
 	
