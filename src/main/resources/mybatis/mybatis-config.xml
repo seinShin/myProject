@@ -13,10 +13,10 @@
 		<setting name="defaultStatementTimeout" value="3000" /-->
 	</settings>
 	
-	<typeAliases>
+	<!-- <typeAliases>
 		<typeAlias alias="dMap" type="board.common.DataMap" />
 		<typeAlias alias="cMap" type="board.common.CamelMap" />
-	</typeAliases>
+	</typeAliases> -->
 	
 	<typeHandlers>
 	</typeHandlers>

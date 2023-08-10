@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board.rest.mapper.indexMapper">
 		
-	<select id="indexList" resultType="cMap" parameterType="dMap">
+	<!-- <select id="indexList" resultType="cMap" parameterType="dMap">
 		/* indexList :: 메인 조회 */
 		SELECT SEQ
 		, TITLE
@@ -94,5 +94,5 @@
 			, REG_ID = #{adminId}
 			, REG_DT = NOW()
 	</insert>
-	
+	 -->
 </mapper>
