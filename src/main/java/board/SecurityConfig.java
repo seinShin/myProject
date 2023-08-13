@@ -81,8 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				 * .exceptionHandling(handling -> handling .accessDeniedHandler
 				 * (accessDeniedHandler) .authenticationEntryPoint(authenticationEntryPoint))
 				 */
-                .csrf()
-                .ignoringAntMatchers("/auth/login")
+                .csrf().disable()
                 ;
     }
     

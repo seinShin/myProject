@@ -139,11 +139,13 @@
               <h4 class="mb-2">안녕하세요!</h4>
               <p class="mb-4">신세인의 홈페이지입니다. <br> 회원가입 후 로그인을 진행해주세요. </p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
-              
+              <form id="loginFrm" class="mb-3" action="" method="post">
+              	<input type="hidden" name="loginId" value="">
+              	<input type="hidden" name="loginPw" value="">
+              	
                 <div class="mb-3">
                   <label for="email" class="form-label">EMAIL</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus/>
+                  <input type="text" class="form-control" id="id" name="id" placeholder="Enter your email" autofocus/>
                 </div>
                 
                 <div class="mb-3 form-password-toggle">
@@ -155,7 +157,7 @@
                   </div>
                   
                   <div class="input-group input-group-merge">
-                    <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password"/>
+                    <input type="password" id="pw" class="form-control" name="pw" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password"/>
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
@@ -168,7 +170,7 @@
                 </div>
                 
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                  <button class="btn btn-primary d-grid w-100" type="button" onclick="loginObj.fn_login();">Sign in</button>
                 </div>
               </form>
 
@@ -206,5 +208,35 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
+    <script type="text/javascript">
+    	let loginObj = {
+    		
+    		fn_login : function(){
+    			var data = {
+	    			id : $("input[name=id]").val(),
+	    			pw : $("input[name=pw]").val()
+    			};
+    			console.log(data);
+    		 	$.ajax({
+    				type : "POST",                              
+    				url : "/rest/user/login",                         
+    				dataType : 'json',                          
+    				contentType : 'application/json',           
+    				data : JSON.stringify(data),                
+    				success : function(res){
+    					alert("login success");
+    					console.log(res)
+    				},                      
+    				error   : function(err){
+    					alert("error")
+    					console.log(err)
+    				}          
+    			}); 
+    			
+    		}
+    		
+    	}
+	</script>
   </body>
 </html>
