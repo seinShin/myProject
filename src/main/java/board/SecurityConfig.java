@@ -64,24 +64,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+    	
+        http.csrf().disable()
+        
                 .authorizeRequests(requests -> requests
-                        .antMatchers("/rest/user/login").permitAll()
+                        .antMatchers("/auth/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/auth/login")
-                        .loginProcessingUrl("/rest/user/login") 
+                        .loginProcessingUrl("/login")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
                         .failureHandler(loginFailHandler)
                         .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/auth/login")
                         .permitAll())
 				/*
 				 * .exceptionHandling(handling -> handling .accessDeniedHandler
 				 * (accessDeniedHandler) .authenticationEntryPoint(authenticationEntryPoint))
 				 */
-                .csrf().disable()
+               
                 ;
     }
     
