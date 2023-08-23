@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board.security.mapper.userMapper">
-	<select id="gerUserInfo" resultType="board.security.User">
-		/* gerUserInfo :: 로그인 정보 조회 */
+	<select id="getAuthInfo" resultType="board.security.User">
+		/* getAuthInfo :: 로그인 정보 조회 */
 		SELECT *
-		FROM tb_mem
-		WHERE ID = #{id} AND PW = #{PASS}
+		FROM tb_user
+		WHERE EMAIL = #{username}
 	</select>
 	
-	
+	<select id="getUserInfo" resultType="HashMap">
+		/* getUserInfo :: 유저 정보 조회 */
+		SELECT MEM_SEQ, ID, NAME, EMAIL, ROLE
+		FROM tb_user
+		WHERE EMAIL = #{username}
+	</select>
 </mapper>
