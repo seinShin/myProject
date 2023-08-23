@@ -16,27 +16,23 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 	@Autowired
 	private UserDetailService userDetailService;
 	
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		
 		String username = authentication.getName();
-		String password = authentication.getCredentials().toString();
+		String password = (String) authentication.getCredentials();
 		
-		
-		UserDetails userDetails = userDetailService.loadUserByUsername(username);
+		CustomUserDetails userDetails = (CustomUserDetails) userDetailService.loadUserByUsername(username);
 		
 		//비밀번호가 일치하지 않으면 예외를 던짐
 		if(!passwordEncoder.matches(password, userDetails.getPassword())) {
 			throw new BadCredentialsException("BadCredentialsException");
         } 
 		
-		//사용자의 인증정보를 담고있는 객체
-		//principal - 사용자의 아이디나 식별자
-		//credentials - 비밀번호 또는 인증을 위한 토큰
-		// 이 객체로 인증 수행
-		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getAuthorities());
+		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 		
 		return authenticationToken;
 	}

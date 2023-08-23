@@ -16,17 +16,15 @@ public class UserDetailService implements UserDetailsService {
 
 	
 	@Override
-    public UserDetails loadUserByUsername(String insertedId) throws UsernameNotFoundException {
-        User user = userMapper.getUserInfo(insertedId);
-        
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userMapper.getAuthInfo(username);
+      
         if (user == null) {
-            throw new UsernameNotFoundException("일치하는 아이디가 없습니다.");
+            throw new UsernameNotFoundException("UsernameNotFoundException");
         }
         
-       
-//        String pw = user.getPassword(); 
-//        String role = user.getRole(); 
-        System.out.println("user"+ user.getDetail());
+        user.setDetail(user);
+        
         return new CustomUserDetails(user);
     }
 }

@@ -13,6 +13,7 @@ public class CustomUserDetails implements UserDetails{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private User user;
 	
 	public CustomUserDetails(User user) {
@@ -31,7 +32,7 @@ public class CustomUserDetails implements UserDetails{
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return user.getPass();
     }
 
     @Override
