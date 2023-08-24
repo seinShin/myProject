@@ -1,6 +1,7 @@
 package board.front;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,12 +43,9 @@ public class indexController {
 		
 		if(authentication != null) {
 			Object principal = authentication.getPrincipal();
-			System.out.println(principal + "-----principal");
 			if(principal instanceof CustomUserDetails) {
 				CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-				System.out.println(userDetails + "-----user");
 				if(userDetails != null){
-					System.out.println("23234234");
 					model.addAttribute("memberInfo", userMapper.getUserInfo(userDetails.getUsername()));
 				}
 			}
@@ -92,12 +90,14 @@ public class indexController {
 	* @Description: 로그인 페이지
 	**************************************************/
 	@GetMapping({"/auth/login"})
-    public String login(HttpServletRequest request, Model model) throws Exception {
+    public String login(HttpServletRequest request, Model model, HttpSession session) throws Exception {
 		logger.info("login controller---start");
-		
-
-		
-		logger.info("login controller---start");
+		String error = (String) session.getAttribute("errorMessage");
+		if (error != null) {
+	        model.addAttribute("errorMessage", error);
+	        session.removeAttribute("errorMessage"); // 세션 정보 삭제
+	    }
+		logger.info("login controller---end");
 		return "/auth/login";
 	}
 	
