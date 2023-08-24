@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -136,13 +137,12 @@
                 </a>
               </div>
               <!-- /Logo -->
+            
               <h4 class="mb-2">안녕하세요!</h4>
               <p class="mb-4">신세인의 홈페이지입니다. <br> 회원가입 후 로그인을 진행해주세요. </p>
 
-               <form action="/login" method="POST">
-              	<input type="hidden" name="loginId" value="">
-              	<input type="hidden" name="loginPw" value="">
-              	
+               <form action="/login" method="post">
+      
                 <div class="mb-3">
                   <label for="email" class="form-label">EMAIL</label>
                   <input type="text" class="form-control" id="id" name="username" placeholder="Enter your email" autofocus/>
@@ -170,7 +170,7 @@
                 </div>
                 
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit" onclick="loginObj.fn_login();">Sign in</button>
+                  <button class="btn btn-primary d-grid w-100" type="submit" >Sign in</button>
                 </div>
               </form>
 
@@ -239,4 +239,11 @@
     	} */
 	</script>
   </body>
+  	<!-- 에러 메세지 테스트 -->
+    <c:if test="${not empty errorMessage}">
+    	<script type="text/javascript">
+    		var errormessage = '${errorMessage}';
+    		console.log(errormessage)
+    	</script>
+	</c:if>
 </html>
