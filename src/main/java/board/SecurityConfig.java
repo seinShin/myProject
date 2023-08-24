@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -33,14 +34,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// 사용자 정보를 가져오고 인증
 	@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(customAuthenticationProvider)
-            .userDetailsService(userDetailsService)
-            .passwordEncoder(passwordEncoder());
+        auth.authenticationProvider(customAuthenticationProvider);
     }
 	
 	@Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+	
+	// usernameNotFoundException 활성화
+	@Bean
+	public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        authenticationProvider.setHideUserNotFoundExceptions(false);
+        return authenticationProvider;
     }
 //	
 //	@Bean
@@ -48,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        return new LoginFailHandler();
 //    }
 	@Autowired
-	public LoginFailHandler loginFailHandler;
+	private LoginFailHandler loginFailHandler;
 	
 	@Autowired
 	private WebAccessDeniedHandler accessDeniedHandler;
@@ -62,24 +71,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 	
+	
+	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	
-        http.csrf().disable()
-        
-                .authorizeRequests(requests -> requests
-                        .antMatchers("/auth/**").permitAll()
-                        .anyRequest().authenticated())
-                .formLogin(login -> login
-                        .loginPage("/auth/login")
-                        .loginProcessingUrl("/login")
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                        .failureHandler(loginFailHandler)
-                        .permitAll())
-                .logout(logout -> logout
-                        .logoutUrl("/logout")
-                        .permitAll())
+        http
+        		.csrf().disable()
+                .authorizeRequests()
+                        .antMatchers("/auth/**", "/errorPage").permitAll()
+                        .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                    .loginPage("/auth/login")
+                    .loginProcessingUrl("/login")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
+                    .failureHandler(loginFailHandler)		//실패 처리
+                    .permitAll()
+                .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .permitAll()
+              /*  .and()*/
+/*                .exceptionHandling()
+                .authenticationEntryPoint(authenticationEntryPoint)	//인증 예외
+                .accessDeniedHandler(accessDeniedHandler*/
 				/*
 				 * .exceptionHandling(handling -> handling .accessDeniedHandler
 				 * (accessDeniedHandler) .authenticationEntryPoint(authenticationEntryPoint))
